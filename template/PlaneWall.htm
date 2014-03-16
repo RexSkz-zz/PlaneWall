@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title>纸飞机六周年生日会 - 飞机墙</title>
+	<link rel="stylesheet" type="text/css" href="{$plugPosi}/css/main.css" />
+	<script type="text/javascript" >
+		var WallID = {$WallID};
+		var plugPosi = "{$plugPosi}";
+		var timeLag = 2000;
+		var page_max = 3;
+		var lastpos = 0;
+		var pauseIF=0;
+		var wordMax = 140;
+		var ajaxTimeOut = 5000;
+		var screwRun,gett,posi;
+		var state = {pause:'continue',ajax:"free"};
+		var runState = {screw:0,getCont:0};
+	</script>
+	<script type="text/javascript" src="./static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="{$plugPosi}/js/main.js"></script>
+	<script type="text/javascript" src="{$plugPosi}/js/jQuery_mousewheel_plugin.js"></script>
+</head>
+<body>
+	<div class="PlaneWall">
+		<div class="Wall_main">
+			<div class="sq">
+				<a href="./member.php?mod=register" target="_blank">我要注册</a>			
+				<a href="./forum.php?mod=viewthread&tid={$WallID}" target="_blank">我要上墙</a>	
+			</div>
+			<div class="Wall_pre"></div>
+			<div class="Wall_screw"></div>
+			<div class="Wall_stage"></div>
+			<div class="Wall_over"></div>
+			<div class="Wall_control">
+				<div class="Wall_button">
+					<button class="Wall_up" ></button>
+					<button class="Wall_pause" ></button>
+					<button class="Wall_down" ></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

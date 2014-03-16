@@ -1,0 +1,17 @@
+{loop $resultAft $t}
+	<ul class="Wall_ul" pos="{$t['position']}">
+		<li class="Wall_userinfo" >
+			<span class="Wall_avatar">
+				{avatar($t['authorid'],middle)}
+			</span>
+			<span class="Wall_uname">
+				<b>{$t['author']}</b>
+				<div class="Wall_uname_bg"></div>
+			</span>
+		</li>
+		<li class="Wall_content">
+			<span class="Wall_cont">{$t['message']}</span>
+		</li>
+		<span class="Wall_floor">{$t['position']}楼</span>
+	</ul>
+{/loop}
