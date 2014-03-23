@@ -1,3 +1,4 @@
+*{text-shadow:1px 1px 5px #999 !important;}
 html, body{
 	height:100%;
 	width:100%;
@@ -9,20 +10,52 @@ body{
 	cursor:normal;
 }
 li{list-style-type:none;}
+#logo{
+	float:left;
+	width:100%;
+	height:200px;
+	display:inline-block;
+	background-image:url(../images/logo.png);
+	z-index:1;
+}
 .PlaneWall *{
 	margin:0;
 	padding:0;
 	border:0;
 	overflow:hidden;
-	font-family:"微软雅黑","黑体";
+	font-family:"黑体";
 }
 .Wall_main{
 	position:absolute;
 	top:50%;
 	left:50%;
-	margin:-300px 0 0 -480px;
-	width:960px;
-	height:600px;
+	margin:-335px 0 0 -450px;
+	width:900px;
+	height:670px;
+	background:url(../images/wall.jpg) no-repeat center top;
+	text-align:left;
+	color:black;
+	cursor:default;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius:20px;
+}
+.Wall_stage{
+	position:absolute;
+	top:396px;
+	left:50%;
+	width:850px;
+	height:450px;
+	margin:-220px 0 0 -420px;
+}
+#Wall_roof_container{
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin:-335px 0 0 -450px;
+	width:900px;
+	height:670px;
+	z-index:10000;
 	background:url(../images/wall.jpg) no-repeat center top;
 	text-align:left;
 	color:red;
@@ -33,7 +66,7 @@ li{list-style-type:none;}
 }
 .Wall_stage{
 	position:absolute;
-	top:52%;
+	top:396px;
 	left:50%;
 	width:850px;
 	height:450px;
@@ -94,6 +127,7 @@ li{list-style-type:none;}
 	z-index:0;
 	bottom:0;
 	position:absolute;
+
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
 	border-radius:10px;
@@ -120,6 +154,9 @@ li{list-style-type:none;}
 	margin:0 auto;
 	position:relative;
 	background:url(../images/leftslide.png) repeat-y top left;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
 }
 
 .Wall_cont{
@@ -158,7 +195,7 @@ li{list-style-type:none;}
 	z-index:5;
 	width:220px;
 	height:50px;
-	top:530px;
+	top:423px;
 }
 
 .Wall_button{
@@ -172,6 +209,8 @@ li{list-style-type:none;}
 .Wall_control button{
 	width:40px;
 	height:40px;
+	margin-left:2px;
+	margin-right:2px;
 	opacity:0.4;
 	cursor:pointer;
 }
@@ -189,14 +228,25 @@ li{list-style-type:none;}
 .sq{
 	display:block;
 	position:absolute;
-	top:19px;
-	left:770px;
+	top:130px;
+	left:698px;
+	width:auto;
 }
 .sq a{
-	color:white;
+	color:black;
 	text-decoration:none;
+	font-size:18px;
+}
+.sq a:hover{
+	text-decoration:underline;
+}
+#Wall_roof{
+	position:absolute;
+	top:50%;
+	margin-top:-420px;
 }
 #Wall_roof .Wall_ul{
 	background:transparent;
+	position:relative;
 	cursor:default;
 }

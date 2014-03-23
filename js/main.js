@@ -97,9 +97,14 @@ control.getCont = function(){
 control.showRoof = function(){
 	if (status == "busy") return;
 	control.pause();
-	jQuery(".Wall_main").fadeOut(250);
+	var Container = "<div id=\"Wall_roof_container\"></div>";
+	jQuery(".PlaneWall").append(Container);
+	jQuery("#Wall_roof_container").fadeOut(0);
+	jQuery("#Wall_roof_container").fadeIn(255,function(){
+		jQuery(".Wall_main").fadeOut(125);
+	});
 	var DOM = "<div id=\"Wall_roof\"></div>";
-	jQuery("body").append(DOM);
+	jQuery("#Wall_roof_container").append(DOM);
 	DOM = jQuery("#Wall_roof");
 	var zIndex = 1;
 	jQuery("*").each(function(){
@@ -108,24 +113,29 @@ control.showRoof = function(){
 	});
 	DOM.fadeOut(0);
 	DOM.parent = jQuery(".Wall_main");
-	DOM.css({position:"absolute",top:"50%",left:"50%",width:"840px",height:"450px",margin:"-220px 0 0 -420px","background":"url("+plugPosi+"/images/screen.png) no-repeat bottom right","z\-index":zIndex,"font\-family":"微软雅黑,黑体"});
+	DOM.css({position:"absolute",top:"50%",width:"840px",height:"440px",margin:"-220px 0 0 -840px","background":"url("+plugPosi+"/images/screen.png) no-repeat bottom right","z\-index":zIndex,"font-family":"黑体"});
 	DOM.fadeIn(250);
 	jQuery("body").click(function(){
-		DOM.animate({left:0},250,DOM.fadeOut(125, function(){
-			jQuery("*").each(function(){
-				var index = jQuery(this).css("z-index");
-				if ((index != "auto") && (index > zIndex)) jQuery(this).remove();
-			});
-			jQuery("#Wall_roof").remove();
-			jQuery(".Wall_main").fadeIn(250);
-			if (state.pause == 'pause') setTimeout(control.mycontinue(),1000);
-		}));
+		//DOM.animate({left:"-=50px"},125).animate({left:"1640px"},250,function(){
+			//DOM.fadeOut(50,function(){
+				jQuery("*").each(function(){
+					var index = jQuery(this).css("z-index");
+					if ((index != "auto") && (index > zIndex)) jQuery(this).remove();
+				});
+				jQuery("#Wall_roof").remove();
+				jQuery(".Wall_main").fadeIn(0,function(){
+					jQuery("#Wall_roof_container").fadeOut(500,function(){
+						jQuery("#Wall_roof_container").remove();
+						if (state.pause == 'pause') setTimeout(control.mycontinue(),1000);
+					});
+				});
+			//});
+		//});
 	});
 }
 control.showBigScreen = function(ul){
 	if (status == "busy") return;
 	var DOM = ul.clone(true);
-	DOM.css({paddingTop:"12px"});
 	DOM.css({paddingLeft:"0px"});
 	jQuery(DOM).click(function(){ return false; });
 	DOM.parent = jQuery("#Wall_roof");
@@ -139,7 +149,9 @@ control.showBigScreen = function(ul){
 	DOM.css({"z-index":index});
 	jQuery("#Wall_roof").append(DOM);
 	DOM.animate({left:0,width:"840px"});
-	DOM.find(".Wall_content").animate({width:"800px"},function(){fontAuto(tDom,9999);});
+	jQuery("#Wall_roof").animate({top:"50%",marginTop:"-220px",left:"50%",marginLeft:"-370px"},300).animate({marginLeft:"-=50px"},125);
+	DOM.find(".Wall_content").css({width:"800px"});
+	fontAuto(tDom,9999);
 }
 jQuery.ajaxSetup({
 	url	: "./plugin.php?id=PlaneWall:PlaneWall&action=ajax",
@@ -222,10 +234,10 @@ jQuery(document).ready(function(){
 	jQuery("body").keydown(function(event){ 
 		if(event.keyCode==37)control.rollUp();
 		else if(event.keyCode==39)control.rollDown();
-		else if(event.keyCode==10 || event.keyCode==32){
+		/*else if(event.keyCode==10 || event.keyCode==32){
 			if(state.pause=='pause')control.mycontinue();
 			else control.pause();
-		}
+		}*/
 	 });
 	jQuery(".Wall_button").animate({opacity:1},1000);
 	control.getCont();
